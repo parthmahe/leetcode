@@ -1,39 +1,38 @@
 class Solution {
 public:
     
-    bool isPresent(vector<int> v,int target)
-    {
-        sort(v.begin(),v.end());
-        int low=0;
-        int high=v.size()-1;
-        while(low<=high)
+    vector<int> intersection(vector<int>& a, vector<int>& b) {
+            vector<int>mp;
+        sort(a.begin(),a.end());
+        sort(b.begin(),b.end());
+        int n1 = a.size();
+        int n2=b.size();
+        int i=0,j=0;
+        while(i<n1 && j<n2)
         {
-            int mid=low+(high-low)/2;
-            if(v[mid]==target)
-                return true;
-            else if(v[mid]>target)
-                high=mid-1;
-            else
-                low=mid+1;
-        }
-        return false;
-    }
-    
-    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> a1=nums1.size()>nums2.size()?nums2:nums1;
-        vector<int> a2=nums1.size()>nums2.size()?nums1:nums2;
-        int target;
-        vector<int>res;
-        for(int x=0;x<a1.size();x++)
-        {
-            target=a1[x];
-            if(isPresent(a2,target))
+            if(i>0 && a[i]==a[i-1])
             {
-                if(!isPresent(res,target))
-                    res.push_back(target);
-            }              
+               
+                i++;
+                 continue;
+            }
+            if(a[i]<b[j])
+            {
+                i++;
+                
+            }
+            else if(a[i]>b[j])
+            {
+                j++;
+            }
+            else 
+            {
+                mp.push_back(a[i]);
+                i++;j++;
+            }
         }
-        return res;
+        return mp;
+
         
     }
 };

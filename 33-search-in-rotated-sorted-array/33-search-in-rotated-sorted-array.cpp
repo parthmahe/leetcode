@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // this function searches in the divided arrays
     int BS(int low,int high, vector<int> &nums,int x)
     {
         while(low<=high)
@@ -16,6 +17,7 @@ public:
         return -1;
     }
     
+    // this function divides the array in two parts (arr[0]->arr[min-1]),(arr[min]->arr[n-1])
     int search(vector<int>& nums, int target) 
     {
         int N=nums.size();

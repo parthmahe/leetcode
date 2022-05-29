@@ -10,7 +10,7 @@ public:
         {
             for(int y=x+1;y<words.size();y++)
             {
-                if((bitset[x]&bitset[y])==0)
+                if((bitset[x]&bitset[y])==0)// wil be zero if all characters are different.
                   if(words[x].size()*words[y].size()>res)
                       res=words[x].size()*words[y].size();
                 
@@ -25,8 +25,8 @@ public:
         int res=0;
         for(auto it:str)
         {
-            int index=it-'a';
-            res|=1<<(index);
+            int index=it-'a';// a=0,b=1,c=2 & so on..
+            res|=1<<(index); //a=1,b=10,c=100 & abc=111 ((a|b)|c) n so on..
         }
         return res;
     }

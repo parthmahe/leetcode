@@ -1,30 +1,25 @@
 class Solution {
 public:
-    void backtrack(vector<int>ip,vector<int>op,vector<vector<int>>&res,vector<bool> freq)
+    void backtrack(int index,vector<int>v,vector<vector<int>>&res)
     {
-        if(op.size()==ip.size())
+        if(index==v.size()-1)
         {
-            res.push_back(op);
+            res.push_back(v);return;
         }
         
-        for(int x=0;x<ip.size();x++)
+        for(int x=index;x<v.size();x++)
         {
-            if(!freq[x])
-            {
-                freq[x]=true;
-                op.push_back(ip[x]);
-                backtrack(ip,op,res,freq);
-                op.pop_back();
-                freq[x]=false;
-            }
+            swap(v[index],v[x]);
+            backtrack(index+1,v,res);
+            swap(v[index],v[x]);
         }
+            
     }
     
     
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>>v;
-        vector<bool>freq(nums.size(),false);
-        backtrack(nums,{},v,freq);
+        backtrack(0,nums,v);
         return v;
         
     }

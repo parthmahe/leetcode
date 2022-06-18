@@ -11,31 +11,28 @@
  */
 class Solution {
 public:
+    void recursion(TreeNode* root,int level,map<int,int>&mp)
+    {
+        if(!root)
+            return;
+        
+        if(!mp.count(level))
+            mp[level]=root->val;
+        
+        recursion(root->right,level+1,mp);
+        recursion(root->left,level+1,mp);
+    }
+    
+    
+    
     vector<int> rightSideView(TreeNode* root) {
         vector<int>res;
         if(!root)
             return res;
-        queue<pair<TreeNode*,int>>q;
         map<int,int>mp;
-        q.push({root,0});
         
-        while(!q.empty())
-        {
-            int size=q.size();
-            for(int x=0;x<size;x++)
-            {
-                auto temp=q.front();
-                TreeNode* curr=temp.first;
-                int level=temp.second;
-                q.pop();
-                mp[level]=curr->val;
-                if(curr->left)
-                    q.push({curr->left,level+1});
-                if(curr->right)
-                    q.push({curr->right,level+1});
-                
-            }
-        }
+        recursion(root,0,mp);
+        
         for(auto it:mp)
         res.push_back(it.second);
         

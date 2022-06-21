@@ -1,46 +1,20 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-    TreeNode* solve(TreeNode* root, TreeNode* p, TreeNode* q)
-    {
-        if(!root)
-            return NULL;
-        if(root==p)
-            return p;
-        if(root==q)
-            return q;
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if root is None or root==p or root==q:
+            return root
         
-        TreeNode* left=solve(root->left,p,q);
-        TreeNode* right=solve(root->right,p,q);
+        left=self.lowestCommonAncestor(root.left,p,q)
+        right=self.lowestCommonAncestor(root.right,p,q)
         
-        if(left==NULL)
-        {
-            return right;
-        }
-        else if(right==NULL)
-        {
-            return left;
-        }
-        
-        else
-        {
-            return root;
-        }
-    }
-    
-    
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        
-        return solve(root,p,q);
-        
-        
-    }
-};
+        if left is None:
+            return right
+        if right is None:
+            return left
+        return root

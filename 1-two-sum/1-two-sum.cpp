@@ -10,7 +10,7 @@ public:
             }
             mp[nums[x]]=x;
         }
-        return {-1,-1};
+        return {-20,-1};
         
     }
 };

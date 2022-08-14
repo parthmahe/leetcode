@@ -1,9 +1,8 @@
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
-        vector<int> dp1(cost.size()+1,-1);
-        vector<int> dp2(cost.size()+1,-1);
-        return min(mincost(cost,cost.size(),dp1),mincost(cost,cost.size()-1,dp2));     
+        vector<int> dp(cost.size()+1,-1);
+        return min(mincost(cost,cost.size(),dp),mincost(cost,cost.size()-1,dp));     
     }
     
     int mincost(vector<int>&cost,int n,vector<int> &dp)

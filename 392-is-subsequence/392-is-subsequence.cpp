@@ -1,4 +1,4 @@
-/*class Solution {
+class Solution {
 public:
     bool isSubsequence(string s, string t) {
         int n=s.size();
@@ -27,9 +27,9 @@ public:
             return solve(X,Y,n,m-1);
         }
     }
-};*/
+};
 
-class Solution {
+/*class Solution {
     int isSubSequence(string& s1, string& s2, int i, int j)
 {
     if (i == 0 || j == 0) {
@@ -57,4 +57,4 @@ public:
         return false;
     }
     }
-};
+};*/

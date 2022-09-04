@@ -22,13 +22,7 @@ public:
         int res= INT_MAX;
         while(x--)
         {
-            // int temp;
-            // if(dp[i+x+1]!=-1)
-            //     temp=dp[i+x+1];
-            // else
-            // {   temp=1+jumpcount(nums,i+x+1,dp);
-            //     dp[i+x+1]=temp;
-            // }
+           
             
             res=min(res,1+jumpcount(nums,i+x+1,dp));
         }

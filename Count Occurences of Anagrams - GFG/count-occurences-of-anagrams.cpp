@@ -8,7 +8,7 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:
-	int search(string pat, string txt) {
+	 int search(string pat, string txt) {
 	    unordered_map<char,int>mp;
 	    for(auto it:pat)
 	    {
@@ -60,7 +60,7 @@ public:
 	            }
 	            
 	            i++;
-	            j++;
+                j++;
 	           
 	       }
 	        
@@ -71,6 +71,7 @@ public:
 	    
 	    
 	}
+
 
 };
 

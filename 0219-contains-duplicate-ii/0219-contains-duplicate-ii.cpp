@@ -5,7 +5,7 @@ public:
         map<int,int> mp;
         for(int x=0;x<nums.size();x++)
         {
-            if(mp.find(nums[x])!=mp.end())
+            if(mp.count(nums[x]))
             {
                 if(x-mp[nums[x]]<=k)
                     return true;

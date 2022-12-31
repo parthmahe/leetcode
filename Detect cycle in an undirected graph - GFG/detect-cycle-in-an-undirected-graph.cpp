@@ -7,23 +7,23 @@ class Solution {
     private:
     bool detectCycle(int src,vector<int>adj[],int vis[])
     {
-        queue<pair<int,int>>q;
-        q.push({src,-1});
+        stack<pair<int,int>>st;
+        st.push({src,-1});
         vis[src]=1;
         
-        while(!q.empty())
+        while(!st.empty())
         {
-            int node=q.front().first;
-            int parent=q.front().second;
+            int node=st.top().first;
+            int parent=st.top().second;
             
-            q.pop();
+            st.pop();
             
             for(auto it:adj[node])
             {
                 if(!vis[it])
                 {
                     vis[it]=1;
-                    q.push({it,node});
+                    st.push({it,node});
                 }
                 else if(it!=parent)
                 {

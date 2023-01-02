@@ -11,37 +11,46 @@ class Solution
 	{
 	    vector<int>topsort;
 	    
-	    stack<int>st;
+	    queue<int>q;
 	    int vis[V]={0};
+	    
+	    vector<int>in(V,0);
 	    for(int i=0;i<V;i++)
 	    {
-	        if(!vis[i])
-	        dfs(i,adj,vis,st);
+	        for(auto it:adj[i])
+	        {
+	            in[it]++;
+	        }
 	    }
 	    
-	    while(!st.empty())
+	    for(int i=0;i<V;i++)
 	    {
-	        topsort.push_back(st.top());
-	        st.pop();
+	        if(in[i]==0)
+	        q.push(i);
+	    }
+	    
+	    while(!q.empty())
+	    {
+	        int node=q.front();
+	        topsort.push_back(node);
+	        q.pop();
+	        vis[node]=1;
+	        
+	        for(auto it:adj[node])
+	        {
+	            in[it]--;
+	            if(in[it]==0)
+	            {
+	                q.push(it);
+	            }
+	        }
+	        
+	        
 	    }
 	    
 	    return topsort;
 	}
 	
-	void dfs(int node,vector<int>adj[],int vis[],stack<int>&st)
-	{
-	    vis[node]=1;
-	    
-	    for(auto it:adj[node])
-	    {
-	        if(!vis[it])
-	        {
-	            dfs(it,adj,vis,st);
-	        }
-	    }
-	    
-	    st.push(node);
-	}
 };
 
 //{ Driver Code Starts.

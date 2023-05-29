@@ -53,7 +53,7 @@ class Trie{
     	(node->endsWith).push_back(index);
     }
 
-        vector<int> WordsEqualTo(string word){
+        vector<int> WordsEqualTo(string &word){
     	TrieNode* node=root;
     	for(int i=0;i<word.size();i++)
     	{
@@ -80,7 +80,7 @@ class Solution{
             s.insert(ls[i]);
         }
         
-        for(auto &it:s)
+        for(auto it:s)
         {
             vector<int>indices=trie.WordsEqualTo(it);
             ls.clear();

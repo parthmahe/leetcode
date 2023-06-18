@@ -19,14 +19,10 @@ public:
 	       }
 	   }
 	   
-	   int i=0;
-	   for( i=0;i<m;i++)
-	   {
-	       if(arr[res][i]==1)
-	       break;
-	   }
+	   if(maxOnes==0)
+	   return -1;
 	   
-	   return i==m?-1:res;
+	   return res;
 	}
 
 };

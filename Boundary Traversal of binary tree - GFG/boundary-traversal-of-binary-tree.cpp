@@ -102,6 +102,12 @@ struct Node
     int data;
     Node* left, * right;
 }; */
+/* A binary tree Node
+struct Node
+{
+    int data;
+    Node* left, * right;
+}; */
 
 class Solution {
 public:

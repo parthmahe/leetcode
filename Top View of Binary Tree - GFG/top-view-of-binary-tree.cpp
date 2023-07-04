@@ -104,36 +104,39 @@ class Solution
     //from left to right in Binary Tree.
     vector<int> topView(Node *root)
     {
-        vector<int>res;
-        map<int,int>mp;
-        queue<pair<int,Node*>>q;
-        q.push({0,root});
+        //{Node,{vetical,horizontal}}
+        queue<pair<Node*,int>>q;
+        map<int,int>mp; //since every hdist has one node associated with it
+        q.push({root,0});
+        
         while(!q.empty())
         {
-            for(int i=0;i<q.size();i++)
+            int size=q.size();
+            for(int i=0;i<size;i++)
             {
-                int hdist=q.front().first;
-                Node* node=q.front().second;
+                Node* node=q.front().first;
+                int hdist=q.front().second;
+                
                 q.pop();
+                
                 if(node->left)
-                {
-                    q.push({hdist-1,node->left});
-                }
+                q.push({node->left,hdist-1});
+                
                 if(node->right)
-                {
-                    q.push({hdist+1,node->right});
-                }
+                q.push({node->right,hdist+1});
                 
                 if(mp.find(hdist)==mp.end())
                 mp[hdist]=node->data;
             }
+            
         }
         
+        vector<int>res;
         for(auto it:mp)
         res.push_back(it.second);
         
-        
         return res;
+
     }
 
 };
